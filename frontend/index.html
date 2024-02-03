@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+</head>
+<body>
+    <script>
+        const socket = new WebSocket('ws://localhost:8000/ws/comments/');
+
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            if (data.comments) {
+                console.log('Received comments:', data.comments);
+            }
+        };
+
+        socket.onclose = function(event) {
+            console.log('WebSocket closed.');
+        };
+
+        socket.onerror = function(error) {
+            console.error('WebSocket error:', error);
+        };
+
+    </script>
+</body>
+</html>
