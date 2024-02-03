@@ -35,6 +35,8 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
+RUN chown -R appuser:appuser /app
+
 COPY poetry.lock pyproject.toml /app/
 
 RUN pip3 install poetry==${POETRY_VERSION}
