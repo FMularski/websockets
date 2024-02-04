@@ -10,9 +10,9 @@
         const socket = new WebSocket('ws://localhost:8000/ws/comments/?token=9b0d3248ae0b132e9849edf5637a87fa0729b6a6');
 
         socket.onmessage = function(event) {
-            const data = JSON.parse(event.data);
-            if (data.comments) {
-                console.log('Received comments:', data.comments);
+            const comments = JSON.parse(event.data);
+            if (comments) {
+                console.log('Received comments:', comments);
             }
         };
 
